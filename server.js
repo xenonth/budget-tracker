@@ -17,6 +17,18 @@ app.use(express.json());
 
 app.use(express.static("public"));
 
+//serviceworker registration code
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function() {
+    navigator.serviceWorker.register('/servicewowrker.js').then(function(registration) {
+      // Registration was successful
+      console.log('ServiceWorker registration successful with scope: ', registration.scope);
+    }, function(err) {
+      // registration failed :(
+      console.log('ServiceWorker registration failed: ', err);
+    });
+  });
+}
 
 
 mongoose.connect(
