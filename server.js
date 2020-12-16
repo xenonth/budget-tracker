@@ -1,3 +1,5 @@
+
+//dependencies
 const express = require("express");
 const logger = require("morgan");
 const mongoose = require("mongoose");
@@ -14,6 +16,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.use(express.static("public"));
+
+
 
 mongoose.connect(
   process.env.MONGODB_URI || 'mongodb+srv://owner:V0A9gD2VOncz9zGq@cluster0.oa5wy.mongodb.net/account?retryWrites=true&w=majority',
