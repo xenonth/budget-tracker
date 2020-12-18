@@ -62,6 +62,8 @@ self.addEventListener("fetch", function(event) {
               cache.put(event.request, response.clone());
             }
             //modify to call api for get route
+            
+
             return response;
           })
           .catch(err => {
