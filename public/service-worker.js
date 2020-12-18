@@ -52,7 +52,7 @@ self.addEventListener("activate", function(event) {
 // fetch
 self.addEventListener("fetch", function(event) {
   const {url} = event.request;
-  if (url.includes("/all") || url.includes("/find")) {
+  if (url.includes("/api/transaction")) {
     event.respondWith(
       caches.open(DATA_CACHE_NAME).then(cache => {
         return fetch(event.request)
@@ -61,7 +61,7 @@ self.addEventListener("fetch", function(event) {
             if (response.status === 200) {
               cache.put(event.request, response.clone());
             }
-
+            //modify to call api for get route
             return response;
           })
           .catch(err => {
@@ -73,7 +73,7 @@ self.addEventListener("fetch", function(event) {
   } else {
     // respond from static cache, request is not for /api/*
     event.respondWith(
-      caches.open(CACHE_NAME).then(cache => {
+      caches.open(cacheName).then(cache => {
         return cache.match(event.request).then(response => {
           return response || fetch(event.request);
         });
