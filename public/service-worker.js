@@ -13,7 +13,7 @@ const filesToCache = [
   '/index.html',
   '/index.js',
   '/styles.css',
-  "/manifest.webmanifest",
+  "/manifest.json",
   '/icons/app.js',
   '/img/logo.png'
 ].concat(iconFiles);
